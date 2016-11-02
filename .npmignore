@@ -1,4 +1,0 @@
-/lib/**/*.ts
-!/lib/**/*.d.ts
-/test/**/*.ts
-!/test/**/*.d.ts

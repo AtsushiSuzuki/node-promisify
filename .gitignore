@@ -1,5 +1,4 @@
 /node_modules
-/lib/**/*.js
-/lib/**/*.d.ts
-/test/**/*.js
-/test/**/*.d.ts
+*.js
+*.js.map
+*.d.ts

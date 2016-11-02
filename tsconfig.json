@@ -6,7 +6,7 @@
     "suppressImplicitAnyIndexErrors": true,
     "strictNullChecks": true,
     "declaration": true,
-    "inlineSourceMap": true
+    "sourceMap": true
   },
   "include": [
     "**/*.ts"

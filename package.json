@@ -4,6 +4,9 @@
   "description": "convert node.js callback function into function that returns promise",
   "main": "lib/promisify.js",
   "types": "lib/promisify.d.ts",
+  "engines": {
+    "node": ">=6"
+  },
   "scripts": {
     "build": "tsc",
     "prepublish": "tsc",
