@@ -1,3 +1,6 @@
+/**
+ * promisify node.js style function with single result.
+ */
 export function fn(f: Function): (...args: any[]) => Promise<any> {
   return (...args: any[]) => {
     return new Promise<any>((resolve, reject) => {
@@ -11,6 +14,9 @@ export function fn(f: Function): (...args: any[]) => Promise<any> {
   };
 }
 
+/**
+ * promisify node.js style function with multiple results.
+ */
 export function fnn(f: Function): (...args: any[]) => Promise<any[]> {
   return (...args: any[]) => {
     return new Promise<any>((resolve, reject) => {
@@ -24,10 +30,16 @@ export function fnn(f: Function): (...args: any[]) => Promise<any[]> {
   };
 }
 
+/**
+ * call node.js style function with single result.
+ */
 export function call(f: Function, ...args: any[]): Promise<any> {
   return fn(f)(...args);
 }
 
+/**
+ * call node.js style function with multiple results.
+ */
 export function calln(f: Function, ...args: any[]): Promise<any[]> {
   return fnn(f)(...args);
 }
@@ -35,17 +47,20 @@ export function calln(f: Function, ...args: any[]): Promise<any[]> {
 export default fn;
 
 
-interface EventEmitter {
+export interface EventEmitter {
   on(event: string, listener: Function): this;
   once(event: string, listener: Function): this;
   removeListener(event: string, listener: Function): this;
 }
 
-type EventDefinition = [
+export type EventDefinition = [
   EventEmitter,
   {[event: string]: Function}
 ];
 
+/**
+ * returns a promise to wait until specified event fires. with single event argument.
+ */
 export function wait(ee: EventEmitter, event: string): Promise<any> {
   return new Promise<any>((resolve, reject) => {
     ee.once(event, (...args: any[]) => {
@@ -54,6 +69,9 @@ export function wait(ee: EventEmitter, event: string): Promise<any> {
   });
 }
 
+/**
+ * returns a promise to wait until specified event fires. with multiple event arguments.
+ */
 export function waitn(ee: EventEmitter, event: string): Promise<any[]> {
   return new Promise<any>((resolve, reject) => {
     ee.once(event, (...args: any[]) => {
@@ -62,9 +80,13 @@ export function waitn(ee: EventEmitter, event: string): Promise<any[]> {
   });
 }
 
+/**
+ * returns a promise to wait until any of specified events fire.
+ */
 export function waitAny(...defs: EventDefinition[]): Promise<any> {
   return new Promise<any>((resolve, reject) => {
     const listeners: [EventEmitter, string, Function][] = [];
+
     function clear() {
       for (let [ee, event, listener] of listeners) {
         ee.removeListener(event, listener);
@@ -88,22 +110,6 @@ export function waitAny(...defs: EventDefinition[]): Promise<any> {
 
         ee.on(event, listener);
         listeners.push([ee, event, listener]);
-      }
-    }
-  });
-}
-
-
-export function wrap(target: Object, functions: {[name: string]: "fn"|"fnn"|false}) {
-  return new Proxy(target, {
-    get(target, prop, receiver) {
-      const opt = functions[prop];
-      if (opt === "fn") {
-        return fn(target[prop]);
-      } else if (opt === "fnn") {
-        return fnn(target[prop]);
-      } else {
-        return target[prop];
       }
     }
   });

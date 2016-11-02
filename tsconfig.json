@@ -5,6 +5,14 @@
     "noImplicitAny": true,
     "suppressImplicitAnyIndexErrors": true,
     "strictNullChecks": true,
+    "declaration": true,
     "inlineSourceMap": true
-  }
+  },
+  "include": [
+    "**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.d.ts"
+  ]
 }

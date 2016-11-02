@@ -1,9 +1,12 @@
 {
   "name": "@atsushi_suzuki/promisify",
   "version": "0.0.1",
-  "description": "",
+  "description": "convert node.js callback function into function that returns promise",
   "main": "lib/promisify.js",
+  "types": "lib/promisify.d.ts",
   "scripts": {
+    "build": "tsc",
+    "prepublish": "tsc",
     "test": "mocha"
   },
   "repository": {
@@ -20,6 +23,7 @@
   "devDependencies": {
     "@types/mocha": "^2.2.32",
     "@types/node": "^6.0.46",
-    "mocha": "^3.1.2"
+    "mocha": "^3.1.2",
+    "typescript": "^2.0.6"
   }
 }
