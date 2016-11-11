@@ -1,6 +1,6 @@
 import * as assert from "assert";
 import {EventEmitter} from "events";
-import * as p from "../lib/promisify";
+import * as p from "../lib";
 
 
 describe("lib/promisify", () => {

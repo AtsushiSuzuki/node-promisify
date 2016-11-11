@@ -2,14 +2,14 @@
   "name": "@atsushi_suzuki/promisify",
   "version": "0.0.1",
   "description": "convert node.js callback function into function that returns promise",
-  "main": "lib/promisify.js",
-  "types": "lib/promisify.d.ts",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "engines": {
     "node": ">=6"
   },
   "scripts": {
-    "build": "tsc",
-    "prepublish": "tsc",
+    "build": "tsc && node tools/gen > lib/promisify.ts && tsc",
+    "prepublish": "npm run build",
     "test": "mocha"
   },
   "repository": {
