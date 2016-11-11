@@ -22,20 +22,20 @@ import * as p from "@atsushi_suzuki/promisify";
 
 # API
 
-## function fn(f: Function): (...args: any[]) => Promise<any>
+## function promisify(f: Function): (...args: any[]) => Promise<any>
 promisify node.js style function with single result.
 
 usage:
 ```typescript
-const data = await p.fn(fs.readFile)("package.json", "utf-8");
+const data = await p.promisify(fs.readFile)("package.json", "utf-8");
 ```
 
-## function fnn(f: Function): (...args: any[]) => Promise<any[]>
+## function promisifyn(f: Function): (...args: any[]) => Promise<any[]>
 promisify node.js style function with multiple results.
 
 usage:
 ```typescript
-const [bytesRead, buffer] = await p.fnn(fs.read)(fd, buf, offset, length, pos);
+const [bytesRead, buffer] = await p.promisifyn(fs.read)(fd, buf, offset, length, pos);
 ```
 
 ## function call(f: Function, ...args: any[]): Promise<any>

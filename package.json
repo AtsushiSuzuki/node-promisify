@@ -1,6 +1,6 @@
 {
   "name": "@atsushi_suzuki/promisify",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "convert node.js callback function into function that returns promise",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
