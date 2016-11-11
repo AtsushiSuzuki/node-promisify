@@ -8,7 +8,7 @@
     "node": ">=6"
   },
   "scripts": {
-    "build": "tsc && node tools/gen > lib/promisify.ts && tsc",
+    "build": "tsc tools/gen.ts && node tools/gen > lib/promisify.ts && tsc",
     "prepublish": "npm run build",
     "test": "mocha"
   },
