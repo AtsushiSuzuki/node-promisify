@@ -36,15 +36,15 @@ console.log();
 
 for (let j = 0; j <= 1; j++) {
   for (let i = 0; i < maxArgs; i++) {
-    console.log(define(`call${j}`, i, j, false));
+    console.log(declare(`call${j}`, i, j, false));
   }
-  console.log(`export function call${j}(fn: Function, ...args: any[]): Promise<any[]> {
+  console.log(`export function call${j}(fn: Function, ...args: any[]): Promise<void> {
   return call(fn, ...args);
 }`);
   for (let i = 0; i < maxArgs; i++) {
-    console.log(define(`promisify${j}`, i, j, true));
+    console.log(declare(`promisify${j}`, i, j, true));
   }
-  console.log(`export function promisify${j}(fn: Function): (...args: any[]) => Promise<any[]> {
+  console.log(`export function promisify${j}(fn: Function): (...args: any[]) => Promise<void> {
   return promisify(fn);
 }`);
   console.log();
@@ -52,13 +52,13 @@ for (let j = 0; j <= 1; j++) {
 
 for (let j = 2; j <= maxResults; j++) {
   for (let i = 0; i < maxArgs; i++) {
-    console.log(define(`call${j}`, i, j, false));
+    console.log(declare(`call${j}`, i, j, false));
   }
   console.log(`export function call${j}(fn: Function, ...args: any[]): Promise<any[]> {
   return calln(fn, ...args);
 }`);
   for (let i = 0; i < maxArgs; i++) {
-    console.log(define(`promisify${j}`, i, j, true));
+    console.log(declare(`promisify${j}`, i, j, true));
   }
   console.log(`export function promisify${j}(fn: Function): (...args: any[]) => Promise<any[]> {
   return promisifyn(fn);
@@ -67,7 +67,7 @@ for (let j = 2; j <= maxResults; j++) {
 }
 
 
-function define(name: string, args: number, results: number, promisify: boolean) {
+function declare(name: string, args: number, results: number, promisify: boolean) {
   const typeParams = (0 < args + results)
     ? "<" + [...range(args).map((i) => `T${i}`), ...range(results).map((j) => `R${j}`)].join(", ") + ">"
     : "";

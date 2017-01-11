@@ -37,7 +37,7 @@ export function call0<T1, T2, T3, T4>(fn: (arg1: T1, arg2: T2, arg3: T3, arg4: T
 export function call0<T1, T2, T3, T4, T5>(fn: (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, callback: (err: Error|null|undefined) => any) => any, arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5): Promise<void>;
 export function call0<T1, T2, T3, T4, T5, T6>(fn: (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6, callback: (err: Error|null|undefined) => any) => any, arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6): Promise<void>;
 export function call0<T1, T2, T3, T4, T5, T6, T7>(fn: (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6, arg7: T7, callback: (err: Error|null|undefined) => any) => any, arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6, arg7: T7): Promise<void>;
-export function call0(fn: Function, ...args: any[]): Promise<any[]> {
+export function call0(fn: Function, ...args: any[]): Promise<void> {
   return call(fn, ...args);
 }
 export function promisify0(fn: (callback: (err: Error|null|undefined) => any) => any): () => Promise<void>;
@@ -48,7 +48,7 @@ export function promisify0<T1, T2, T3, T4>(fn: (arg1: T1, arg2: T2, arg3: T3, ar
 export function promisify0<T1, T2, T3, T4, T5>(fn: (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, callback: (err: Error|null|undefined) => any) => any): (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5) => Promise<void>;
 export function promisify0<T1, T2, T3, T4, T5, T6>(fn: (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6, callback: (err: Error|null|undefined) => any) => any): (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6) => Promise<void>;
 export function promisify0<T1, T2, T3, T4, T5, T6, T7>(fn: (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6, arg7: T7, callback: (err: Error|null|undefined) => any) => any): (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6, arg7: T7) => Promise<void>;
-export function promisify0(fn: Function): (...args: any[]) => Promise<any[]> {
+export function promisify0(fn: Function): (...args: any[]) => Promise<void> {
   return promisify(fn);
 }
 
@@ -60,7 +60,7 @@ export function call1<T1, T2, T3, T4, R1>(fn: (arg1: T1, arg2: T2, arg3: T3, arg
 export function call1<T1, T2, T3, T4, T5, R1>(fn: (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, callback: (err: Error|null|undefined, res1: R1) => any) => any, arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5): Promise<R1>;
 export function call1<T1, T2, T3, T4, T5, T6, R1>(fn: (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6, callback: (err: Error|null|undefined, res1: R1) => any) => any, arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6): Promise<R1>;
 export function call1<T1, T2, T3, T4, T5, T6, T7, R1>(fn: (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6, arg7: T7, callback: (err: Error|null|undefined, res1: R1) => any) => any, arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6, arg7: T7): Promise<R1>;
-export function call1(fn: Function, ...args: any[]): Promise<any[]> {
+export function call1(fn: Function, ...args: any[]): Promise<void> {
   return call(fn, ...args);
 }
 export function promisify1<R1>(fn: (callback: (err: Error|null|undefined, res1: R1) => any) => any): () => Promise<R1>;
@@ -71,7 +71,7 @@ export function promisify1<T1, T2, T3, T4, R1>(fn: (arg1: T1, arg2: T2, arg3: T3
 export function promisify1<T1, T2, T3, T4, T5, R1>(fn: (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, callback: (err: Error|null|undefined, res1: R1) => any) => any): (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5) => Promise<R1>;
 export function promisify1<T1, T2, T3, T4, T5, T6, R1>(fn: (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6, callback: (err: Error|null|undefined, res1: R1) => any) => any): (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6) => Promise<R1>;
 export function promisify1<T1, T2, T3, T4, T5, T6, T7, R1>(fn: (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6, arg7: T7, callback: (err: Error|null|undefined, res1: R1) => any) => any): (arg1: T1, arg2: T2, arg3: T3, arg4: T4, arg5: T5, arg6: T6, arg7: T7) => Promise<R1>;
-export function promisify1(fn: Function): (...args: any[]) => Promise<any[]> {
+export function promisify1(fn: Function): (...args: any[]) => Promise<void> {
   return promisify(fn);
 }
 
